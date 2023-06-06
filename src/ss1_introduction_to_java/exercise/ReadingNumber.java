@@ -1,9 +1,8 @@
-package ss1.exercise;
+package ss1_introduction_to_java.exercise;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
-public class reading_number {
+public class ReadingNumber {
     public static void main(String[] args) {
         System.out.println("Enter the number you wanna read :");
         Scanner sc = new Scanner(System.in);
