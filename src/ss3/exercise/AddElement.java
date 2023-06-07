@@ -18,7 +18,7 @@ public class AddElement {
         if (index <= -1 || index >= arr.length - 1) {
             System.out.println("Cant add this number into position " + index);
         } else {
-            for (int i = 0; i < arr.length; i++) {
+            for (int i = 0; i < arrNew.length; i++) {
                 if (index > i) {
                     arrNew[i] = arr[i];
                 } else if (index < i) {
