@@ -12,7 +12,7 @@ public class Program {
             System.out.println();
         }
         for (int i = 2 * h; i > 1; i--) {
-            for (int j = 1; j < (2 * h) +1; j++) {
+            for (int j = 1; j < (2 * h) + 1; j++) {
                 if (j == h - i || j == h + i) {
                     System.out.print(i);
                 } else System.out.print(" ");

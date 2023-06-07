@@ -10,7 +10,7 @@ public class AppearTimesOfElement {
         char word = sc.nextLine().charAt(0);
         int count = 0;
         for (int i = 0; i < arr.length(); i++) {
-            if (word == arr.charAt(i)){
+            if (word == arr.charAt(i)) {
                 count++;
             }
         }
