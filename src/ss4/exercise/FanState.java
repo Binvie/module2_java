@@ -3,9 +3,9 @@ package ss4.exercise;
 import java.sql.SQLOutput;
 
 public class FanState {
-    private final int slow = 1;
-    private final int medium = 2;
-    private final int fast = 3;
+    private final int SLOW = 1;
+    private final int MEDIUM = 2;
+    private final int FAST = 3;
     int speed = 1;
     boolean on = false;
     double radius = 5;
