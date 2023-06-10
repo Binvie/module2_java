@@ -1,5 +1,7 @@
 package ss5.practice;
 
+import ss5.exercise.Circle;
+
 public class StaticMethod {
     private int rollno;
     private String name;

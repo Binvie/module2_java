@@ -7,6 +7,7 @@ public class FanState {
     private final int MEDIUM = 2;
     private final int FAST = 3;
     int speed = 1;
+
     boolean on = false;
     double radius = 5;
 
