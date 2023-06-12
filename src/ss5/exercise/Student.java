@@ -7,11 +7,11 @@ public class Student {
     public Student() {
     }
 
-    public String setName() {
-        return name;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String setClasses() {
-        return classes;
+    public void setClasses(String classes) {
+        this.classes = classes;
     }
 }
