@@ -1,6 +1,8 @@
 package ss7.exercise;
 
-public class Square extends Shape implements Resizeable {
+import ss7.exercise2.Colorable;
+
+public class Square extends Shape implements Resizeable, Colorable {
     private double side;
 
     public Square() {
@@ -41,4 +43,11 @@ public class Square extends Shape implements Resizeable {
     public double reSize(double percent) {
         return getArea() + (percent / 100)*getArea();
     }
+
+    @Override
+    public String howToColor()
+        {
+            return "Color all four sides";
+        }
+
 }

@@ -1,5 +1,7 @@
 package ss7.exercise;
 
+import ss7.exercise2.Colorable;
+
 public class Circle extends Shape implements Resizeable {
     private double radius = 1.0;
 

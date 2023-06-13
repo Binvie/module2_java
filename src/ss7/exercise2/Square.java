@@ -1,11 +1,17 @@
 package ss7.exercise2;
 
 import ss7.exercise.Resizeable;
+import ss7.exercise.Shape;
 
-public class Square implements Colorable {
+public class Square extends Shape implements Colorable {
     private double side;
 
     public Square() {
+    }
+
+    @Override
+    public double getArea() {
+        return 0;
     }
 
     public Square(double side) {
@@ -23,7 +29,7 @@ public class Square implements Colorable {
     @Override
     public String toString() {
         return "Square{" +
-                " side = " + side + '\n' + howToColor() +
+                " side = " + side + '\n' +
                 '}';
     }
 
