@@ -38,4 +38,7 @@ public class Circle extends Shape implements Resizeable {
     public double reSize(double percent) {
         return getArea() + (percent / 100)*getArea();
     }
+    public double getPerimeter(){
+        return 4;
+    }
 }
