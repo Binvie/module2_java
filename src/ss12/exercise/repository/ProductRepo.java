@@ -1,22 +1,24 @@
-package ss12.exercise;
+package ss12.exercise.repository;
+
+import ss12.exercise.model.Product;
 
 import java.util.*;
 
 public class ProductRepo  {
-    public static List<ProductModel> list = new ArrayList<>();
+    public static List<Product> list = new ArrayList<>();
 
     static {
-        list.add(new ProductModel(1, "fan", 500, "Thien"));
-        list.add(new ProductModel(2, "table", 1000, "Thoi"));
-        list.add(new ProductModel(3, "chair", 300, "Thien"));
-        list.add(new ProductModel(4, "AC", 5000, "Thien"));
+        list.add(new Product(1, "fan", 500, "Thien"));
+        list.add(new Product(2, "table", 1000, "Thoi"));
+        list.add(new Product(3, "chair", 300, "Thien"));
+        list.add(new Product(4, "AC", 5000, "Thien"));
     }
 
-    public void addNew(ProductModel productModel) {
-        list.add(productModel);
+    public void addNew(Product product) {
+        list.add(product);
     }
 
-    public void edit(int id, ProductModel productModel) {
+    public void edit(int id, Product product) {
         Scanner sc = new Scanner(System.in);
         int index = seachId(id);
         System.out.println(list.get(index));
@@ -26,7 +28,7 @@ public class ProductRepo  {
         if (input.equals("yes")) {
             for (int i = 0; i < list.size(); i++) {
                 if (id == list.get(i).getId()) {
-                    list.set(i, productModel);
+                    list.set(i, product);
                 }
             }
         } else System.out.println("cancel");
@@ -45,7 +47,7 @@ public class ProductRepo  {
 
 
     public void display() {
-        for (ProductModel value : list) {
+        for (Product value : list) {
             System.out.println(value);
         }
     }

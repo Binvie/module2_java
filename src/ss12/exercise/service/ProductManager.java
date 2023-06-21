@@ -1,4 +1,7 @@
-package ss12.exercise;
+package ss12.exercise.service;
+
+import ss12.exercise.model.Product;
+import ss12.exercise.repository.ProductRepo;
 
 import java.util.Scanner;
 
@@ -15,8 +18,8 @@ public class ProductManager {
         int price = Integer.parseInt(sc.nextLine());
         System.out.println("Enter product's brand");
         String brand = sc.nextLine();
-        ProductModel productModel1 = new ProductModel(id, name, price, brand);
-        productRepo.addNew(productModel1);
+        Product product1 = new Product(id, name, price, brand);
+        productRepo.addNew(product1);
     }
 
     public void edit() {
@@ -34,8 +37,8 @@ public class ProductManager {
             int price = Integer.parseInt(sc.nextLine());
             System.out.println("Change product's brand");
             String brand = sc.nextLine();
-            ProductModel productModel2 = new ProductModel(id, name, price, brand);
-            productRepo.edit(id, productModel2);
+            Product product2 = new Product(id, name, price, brand);
+            productRepo.edit(id, product2);
         }
     }
 

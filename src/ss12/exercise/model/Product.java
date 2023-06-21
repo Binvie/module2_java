@@ -1,17 +1,15 @@
-package ss12.exercise;
+package ss12.exercise.model;
 
-import java.util.Comparator;
-
-public class ProductModel {
+public class Product {
     int id =1;
     String name= "thien";
     int price=10000;
     String brand="khung";
 
-    public ProductModel() {
+    public Product() {
     }
 
-    public ProductModel(int id, String name, int price, String brand) {
+    public Product(int id, String name, int price, String brand) {
         this.id = id;
         this.name = name;
         this.price = price;

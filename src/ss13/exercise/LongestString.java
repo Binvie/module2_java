@@ -9,7 +9,7 @@ public class LongestString {
         LinkedList<Character> max = new LinkedList<>();
         LinkedList<Character> list = new LinkedList<>();
 
-        System.out.print("Nhập chuỗi: ");
+        System.out.print("Enter string: ");
         String string = input.nextLine();
         for (int i = 0; i < string.length(); i++) {
             if (list.size() > 1 && string.charAt(i) <= list.getLast() &&

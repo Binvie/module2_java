@@ -1,4 +1,6 @@
-package ss12.exercise;
+package ss12.exercise.controller;
+
+import ss12.exercise.service.ProductManager;
 
 import java.util.Scanner;
 
