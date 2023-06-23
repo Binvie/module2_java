@@ -1,0 +1,4 @@
+Product{id=1, name='Thoi', Price=300, brand='Dn', discription='hơi non'}
+Product{id=2, name='Hai', Price=500, brand='SG', discription='hơi tra'}
+Product{id=3, name='Sang', Price=1000, brand='Hue', discription='hơi non'}
+Product{id=4, name='Thien', Price=3000, brand='Hue', discription='hơi cay'}
