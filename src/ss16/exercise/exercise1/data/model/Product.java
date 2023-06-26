@@ -1,21 +1,23 @@
-package ss16.exercise.model;
+package ss16.exercise.exercise1.data.model;
 
-public class Product {
+import java.io.Serializable;
+
+public class Product implements Serializable {
     int id;
     String name;
     int Price;
     String brand;
-    String discription;
+    String description;
 
     public Product() {
     }
 
-    public Product(int id, String name, int price, String brand, String discription) {
+    public Product(int id, String name, int price, String brand, String description) {
         this.id = id;
         this.name = name;
         Price = price;
         this.brand = brand;
-        this.discription = discription;
+        this.description = description;
     }
 
     public int getId() {
@@ -50,16 +52,16 @@ public class Product {
         this.brand = brand;
     }
 
-    public String getDiscription() {
-        return discription;
+    public String getDescription() {
+        return description;
     }
 
-    public void setDiscription(String discription) {
-        this.discription = discription;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
-        return id + ";" + name + ";" + getPrice() +";" + brand + ";" + discription;
+        return id + "; " + name + "; " + getPrice() + "; " + brand + "; " + description;
     }
 }

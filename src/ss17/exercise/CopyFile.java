@@ -7,8 +7,8 @@ import java.util.List;
 public class CopyFile {
     public static void main(String[] args) {
         List<String> list = new ArrayList<>();
-        List<String> list2 = readFile("D:\\Codegym_source\\module2\\module2_java\\src\\ss17\\exercise\\sourcefile");
-        writeFile("D:\\Codegym_source\\module2\\module2_java\\src\\ss17\\exercise\\targetfile", list2);
+        List<String> list2 = readFile("D:\\Codegym_source\\module2\\module2_java\\src\\ss17\\exercise\\sourcefile.csv");
+        writeFile("D:\\Codegym_source\\module2\\module2_java\\src\\ss17\\exercise\\targetfile.csv", list2);
     }
 
     public static List<String> readFile(String path) {
