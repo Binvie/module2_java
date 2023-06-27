@@ -1,6 +1,7 @@
 package ss16.exercise.exercise1.data.service;
 
 import ss16.exercise.exercise1.data.model.Product;
+import ss16.exercise.exercise1.data.repository.IProductRepository;
 import ss16.exercise.exercise1.data.repository.ProductRepository;
 
 import java.util.ArrayList;
@@ -9,7 +10,7 @@ import java.util.List;
 import static trainning.repository.TeacherRepository.scanner;
 
 public class ProductService implements IProductService {
-    ProductRepository productRepository = new ProductRepository();
+    IProductRepository productRepository = new ProductRepository();
 
     @Override
     public void addNew() {

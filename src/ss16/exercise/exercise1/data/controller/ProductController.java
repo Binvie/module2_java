@@ -1,12 +1,13 @@
 package ss16.exercise.exercise1.data.controller;
 
+import ss16.exercise.exercise1.data.service.IProductService;
 import ss16.exercise.exercise1.data.service.ProductService;
 
 import static trainning.repository.TeacherRepository.scanner;
 
 public class ProductController {
     public void showMenu() {
-        ProductService productService = new ProductService();
+        IProductService productService = new ProductService();
         boolean flag = true;
         do {
             System.out.println("Product Management Program :" +

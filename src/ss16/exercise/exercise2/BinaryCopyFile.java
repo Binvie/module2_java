@@ -7,6 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BinaryCopyFile {
+
+    private static final String SOURCE_PATH = "D:\\Codegym_source\\module2\\module2_java\\src\\ss16\\exercise\\exercise2\\source.dat";
+    private static final String TARGET_PATH = "D:\\Codegym_source\\module2\\module2_java\\src\\ss16\\exercise\\exercise2\\target.dat";
+
+
     public static List<String> readBinaryFile(String path) {
         List<String> stringList = new ArrayList<>();
         File file = new File(path);
@@ -19,10 +24,10 @@ public class BinaryCopyFile {
             objectInputStream.close();
             fileInputStream.close();
         } catch (Exception e) {
-
         }
         return stringList;
     }
+
     public static void writeBinaryFile(String path, List<String> productList) {
         File file = new File(path);
         FileOutputStream fileOutputStream = null;
@@ -38,16 +43,13 @@ public class BinaryCopyFile {
         }
 
     }
-    public static List<String> stringList = new ArrayList<>();
-private static final String SOURCE_PATH = "D:\\Codegym_source\\module2\\module2_java\\src\\ss16\\exercise\\exercise2\\source.dat";
-private static final String TARGET_PATH = "D:\\Codegym_source\\module2\\module2_java\\src\\ss16\\exercise\\exercise2\\target.dat";
-    static {
-        stringList.add("advanced physics");
-    }
     public static void main(String[] args) {
-    List<String> list = new ArrayList<>();
-    list = readBinaryFile(SOURCE_PATH);
-        System.out.println(list);
-    writeBinaryFile(TARGET_PATH,list);
+        List<String> stringList = new ArrayList<>();
+        stringList.add("advanced physics");
+        stringList.add("advanced2 physics");
+        stringList.add("advanced1 physics");
+        writeBinaryFile(SOURCE_PATH,stringList);
+        List<String> list = readBinaryFile(SOURCE_PATH);
+        writeBinaryFile(TARGET_PATH,list);
     }
 }

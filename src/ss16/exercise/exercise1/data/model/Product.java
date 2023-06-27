@@ -3,16 +3,16 @@ package ss16.exercise.exercise1.data.model;
 import java.io.Serializable;
 
 public class Product implements Serializable {
-    int id;
-    String name;
-    int Price;
-    String brand;
-    String description;
+    private int id;
+    private String name;
+    private double Price;
+    private String brand;
+    private String description;
 
     public Product() {
     }
 
-    public Product(int id, String name, int price, String brand, String description) {
+    public Product(int id, String name, double price, String brand, String description) {
         this.id = id;
         this.name = name;
         Price = price;
@@ -36,7 +36,7 @@ public class Product implements Serializable {
         this.name = name;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return Price;
     }
 
