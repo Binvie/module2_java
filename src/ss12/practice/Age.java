@@ -12,6 +12,7 @@ public class Age implements Comparator<Student> {
         }else return -1;
     }
 
+
     public static void main(String[] args) {
         Student student = new Student("Thien",20,"hue");
         Student student1 = new Student("Nguyen",25,"QB");
