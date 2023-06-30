@@ -1,31 +1,31 @@
 package case_study.model.person;
 
-public class Customer extends Person{
-    private int id;
+public class Customer extends Person {
+    private String id;
     private String customerType;
     private String address;
 
     public Customer() {
     }
 
-    public Customer(int id, String customerType, String address) {
+    public Customer(String id, String customerType, String address) {
         this.id = id;
         this.customerType = customerType;
         this.address = address;
     }
 
-    public Customer(String name, String date, boolean gender, String identity, String phoneNumber, String email, int id, String customerType, String address) {
+    public Customer(String id, String name, String date, boolean gender, String identity, String phoneNumber, String email, String customerType, String address) {
         super(name, date, gender, identity, phoneNumber, email);
         this.id = id;
         this.customerType = customerType;
         this.address = address;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -49,14 +49,19 @@ public class Customer extends Person{
     public String toString() {
         return "Customer{" +
                 "id=" + id +
+                ", name='" + name + '\'' +
                 ", customerType='" + customerType + '\'' +
                 ", address='" + address + '\'' +
-                ", name='" + name + '\'' +
                 ", date='" + date + '\'' +
                 ", gender=" + gender +
                 ", identity='" + identity + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 '}';
+    }
+
+    //String id, String name, String date, boolean gender, String identity, String phoneNumber, String email, String customerType, String address
+    public String convertToString() {
+        return id + "," + name + "," + date + "," + gender + "," + identity + "," + phoneNumber + "," + email + "," + customerType + "," + address;
     }
 }

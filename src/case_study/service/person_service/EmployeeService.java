@@ -35,8 +35,7 @@ public class EmployeeService implements IEmployeeService {
         String date = checkValidate.checkDate();
         System.out.println("Enter employee's gender (true : male, false : female) :");
         boolean gender = Boolean.parseBoolean(scanner.nextLine());
-        System.out.println("Enter employee's identity :");
-        String identity = scanner.nextLine();
+        String identity = checkValidate.checkIdentity();
         System.out.println("Enter employee's phoneNumber :");
         String phoneNumber = scanner.nextLine();
         System.out.println("Enter employee's email :");
@@ -45,8 +44,7 @@ public class EmployeeService implements IEmployeeService {
         String level = scanner.nextLine();
         System.out.println("Enter employee's position :");
         String position = scanner.nextLine();
-        System.out.println("Enter employee's salary :");
-        double salary = Double.parseDouble(scanner.nextLine());
+        double salary = checkValidate.checkSalary();
         Employee employee = new Employee(id, name, date, gender, identity, phoneNumber, email, level, position, salary);
         employeeRepository.addNewEmployee(employee);
     }
