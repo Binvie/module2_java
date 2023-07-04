@@ -12,7 +12,6 @@ public class Menu {
                 "\n 4. Exit ");
         int choice = Integer.parseInt(sc.nextLine());
         boolean flag = true;
-
         do {
             switch (choice) {
                 case 1:

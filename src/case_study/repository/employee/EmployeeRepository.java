@@ -61,8 +61,7 @@ public class EmployeeRepository implements IEmployeeRepository {
 
     }
 
-    @Override
-    public int searchID(String id) {
+    public int searchIndex(String id) {
         List<Employee> list = displayEmployeeList();
         for (int i = 0; i < list.size(); i++) {
             if (id.equals(list.get(i).getEmployeeID())) {
