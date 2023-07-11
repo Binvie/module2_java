@@ -1,6 +1,6 @@
 package case_study.model.facility;
 
-public abstract class Facility {
+public abstract class Facility implements  Comparable<Facility> {
     protected String serviceID;
     protected String serviceName;
     protected double usedArea;
@@ -78,5 +78,20 @@ public abstract class Facility {
                 ", numberPerson=" + numberPerson +
                 ", rentingType='" + rentingType + '\'' +
                 '}';
+    }
+
+//    @Override
+//    public int hashCode() {
+//        return super.hashCode();
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        return super.equals(obj);
+//    }
+
+    @Override
+    public int compareTo(Facility o) {
+        return (int) (this.rentingPrice - o.rentingPrice) == 0 ? 1 : (int) (this.rentingPrice - o.rentingPrice);
     }
 }

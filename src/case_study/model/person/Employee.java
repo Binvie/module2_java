@@ -2,7 +2,7 @@ package case_study.model.person;
 
 import java.util.List;
 
-public class Employee extends Person {
+public class Employee extends Person{
     private String employeeID;
     private String level;
     private String position;

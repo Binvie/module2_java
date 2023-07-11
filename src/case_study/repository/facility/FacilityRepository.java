@@ -1,16 +1,11 @@
 package case_study.repository.facility;
 
-import case_study.model.facility.Facility;
-import case_study.model.facility.House;
-import case_study.model.facility.Room;
-import case_study.model.facility.Villa;
+import case_study.model.facility.*;
 
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class FacilityRepository implements IFacilityRepository {
-    public static Map<Facility, Integer> map = new LinkedHashMap<>();
+    public static Map<Facility, Integer> map = new TreeMap<>();
 
     static {
         //String serviceID, String serviceName, double usedArea, double rentingPrice, int numberPerson, String rentingType
@@ -28,6 +23,8 @@ public class FacilityRepository implements IFacilityRepository {
 
     @Override
     public Map<Facility, Integer> displayFacilityList() {
+//        SortPrice sortPrice = new SortPrice();
+//        Collections.sort(map,sortPrice);
         return map;
     }
 
