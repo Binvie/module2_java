@@ -1,4 +1,5 @@
 use furama;
+
 insert into furama.vi_tri value (1, "Quản Lý"),(2, "Nhân Viên");
 
 insert into trinh_do value (1, "Trung Cấp"),(2, "Cao Đẳng"),(3, "Đại Học"),(4, "Sau Đại Học");
