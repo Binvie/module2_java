@@ -50,20 +50,40 @@ order by so_lan_dat_phong;
   -- 6.	Hiển thị ma_dich_vu, ten_dich_vu, dien_tich, chi_phi_thue, ten_loai_dich_vu của tất cả các 
   -- loại dịch vụ chưa từng được khách hàng thực hiện đặt từ quý 1 của năm 2021 (Quý 1 là tháng 1, 2, 3).
   
-  SELECT 
-    dich_vu.ma_dich_vu,
-    dich_vu.ten_dich_vu,
-    dich_vu.dien_tich,
-    dich_vu.chi_phi_thue,
-    loai_dich_vu.ten_loai_dich_vu,
-    COUNT(hop_dong.ma_khach_hang)
+SELECT 
+    dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, dich_vu.chi_phi_thue, loai_dich_vu.ten_loai_dich_vu
 FROM
     dich_vu
-        JOIN
-    hop_dong ON hop_dong.ma_khach_hang = khach_hang.ma_khach_hang
-        JOIN
-    loai_dich_vu ON loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
+        JOIN hop_dong ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+        JOIN khach_hang ON khach_hang.ma_khach_hang = hop_dong.ma_khach_hang
+        JOIN loai_dich_vu ON loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
 WHERE
-    COUNT(hop_dong.ma_khach_hang) = 0
-GROUP BY dich_vu;
-  
+	hop_dong.ma_dich_vu not in
+    (select hop_dong.ma_dich_vu from hop_dong where month(hop_dong.ngay_lam_hop_dong) < 4 and year(hop_dong.ngay_lam_hop_dong) = 2021 )
+group by dich_vu.ma_dich_vu
+order by ma_dich_vu;
+
+-- 7.	Hiển thị thông tin ma_dich_vu, ten_dich_vu, dien_tich, so_nguoi_toi_da, chi_phi_thue, ten_loai_dich_vu của tất cả các 
+-- loại dịch vụ đã từng được khách hàng đặt phòng trong năm 2020 nhưng chưa từng được khách hàng đặt phòng trong năm 2021.
+
+SELECT 
+    dich_vu.ma_dich_vu, dich_vu.ten_dich_vu, dich_vu.dien_tich, loai_dich_vu.ten_loai_dich_vu, dich_vu.so_nguoi_toi_da, dich_vu.chi_phi_thue
+FROM
+    dich_vu
+	JOIN hop_dong ON hop_dong.ma_dich_vu = dich_vu.ma_dich_vu
+	JOIN loai_dich_vu ON loai_dich_vu.ma_loai_dich_vu = dich_vu.ma_loai_dich_vu
+WHERE
+	hop_dong.ma_dich_vu not in
+    (select hop_dong.ma_dich_vu from hop_dong where year(hop_dong.ngay_lam_hop_dong) = 2021 )
+group by dich_vu.ma_dich_vu
+order by ma_dich_vu;
+    
+-- 8.	Hiển thị thông tin ho_ten khách hàng có trong hệ thống, với yêu cầu ho_ten không trùng nhau.
+-- Học viên sử dụng theo 3 cách khác nhau để thực hiện yêu cầu trên.
+(select distinct ho_ten from khach_hang);
+
+select khach_hang.ho_ten from khach_hang group by ho_ten;
+
+-- 9.Thực hiện thống kê doanh thu theo tháng, nghĩa là tương ứng với mỗi tháng trong năm 2021 thì sẽ có bao nhiêu khách hàng thực hiện đặt phòng.
+
+
