@@ -33,7 +33,8 @@ where mark in (select max(mark) from mark );
 
 -- Hiển thị các thông tin sinh viên và điểm trung bình của mỗi sinh viên, xếp hạng theo thứ tự điểm giảm dần
 
-select *, (mark / exam_times) as diem_trung_binh
-from student s
-join mark m on m.student_id = s.student_id
-order by diem_trung_binh;
+select *, avg(m.mark) as diem_trung_binh
+from student
+join mark m on m.student_id = student.student_id
+join `subject` s on s.sub_id = m.sub_id
+group by student.student_id;
