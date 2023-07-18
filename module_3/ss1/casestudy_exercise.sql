@@ -175,7 +175,7 @@ having so_lan_su_dung = 1;
  -- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
  
  select nv.ma_nhan_vien, nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.so_dien_thoai,
- nv.dia_chi , count(hd.ma_nhan_vien)
+ nv.dia_chi
  from nhan_vien nv
  left join hop_dong hd on hd.ma_nhan_vien = nv.ma_nhan_vien
  left join trinh_do td on td.ma_trinh_do = nv.ma_trinh_do
@@ -187,12 +187,19 @@ having so_lan_su_dung = 1;
  -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021
  -- là lớn hơn 10.000.000 VNĐ.
  
- select *
+ set sql_mode = 0;
+ select kh.ma_khach_hang, kh.ho_ten,lk.ma_loai_khach,lk.ten_loai_khach, dv.chi_phi_thue + ifnull((hdct.so_luong * dvdk.gia),0) as tong_tien
  from khach_hang kh 
  join loai_khach lk on lk.ma_loai_khach = kh.ma_loai_khach
+ join hop_dong hd on hd.ma_khach_hang = kh.ma_khach_hang
+ join hop_dong_chi_tiet hdct on hdct.ma_hop_dong = hd.ma_hop_dong
+ join dich_vu dv on dv.ma_dich_vu = hd.ma_dich_vu
+ join dich_vu_di_kem dvdk on dvdk.ma_dich_vu_di_kem = hdct.ma_dich_vu_di_kem
+ group by kh.ma_khach_hang
+ having lk.ten_loai_khach = 'Platinium' 
+ and tong_tien > 100000;
  
- 
- 
+
  
  
  
