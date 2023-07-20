@@ -173,15 +173,24 @@ having so_lan_su_dung = 1;
  having count(hd.ma_nhan_vien) < 3;
 
  -- 16.	Xóa những Nhân viên chưa từng lập được hợp đồng nào từ năm 2019 đến năm 2021.
- 
- select nv.ma_nhan_vien, nv.ho_ten, td.ten_trinh_do, bp.ten_bo_phan, nv.so_dien_thoai,
- nv.dia_chi
+ select nv.ma_nhan_vien, nv.ho_ten
+ from nhan_vien nv
+ where ma_nhan_vien not in(
+ select nv.ma_nhan_vien
  from nhan_vien nv
  left join hop_dong hd on hd.ma_nhan_vien = nv.ma_nhan_vien
- left join trinh_do td on td.ma_trinh_do = nv.ma_trinh_do
- left join bo_phan bp on bp.ma_bo_phan = nv.ma_bo_phan
- group by ma_nhan_vien
- having count(hd.ma_nhan_vien) = 0;
+ where year(hd.ngay_lam_hop_dong) between 2019 and 2021);
+
+-- ALTER TABLE `furama`.`nhan_vien` 
+-- ADD COLUMN `is_delete` BIT(1) NOT NULL DEFAULT 0 AFTER `ma_bo_phan`;
+-- set is_delete = 0 
+-- where ma_nhan_vien in select nv.ma_nhan_vien, nv.ho_ten
+--  from nhan_vien nv
+--  where ma_nhan_vien not in(
+--  select nv.ma_nhan_vien
+--  from nhan_vien nv
+--  left join hop_dong hd on hd.ma_nhan_vien = nv.ma_nhan_vien
+--  where year(hd.ngay_lam_hop_dong) between 2019 and 2021);
 
  -- 17.	Cập nhật thông tin những khách hàng có ten_loai_khach từ Platinum lên Diamond, 
  -- chỉ cập nhật những khách hàng đã từng đặt phòng với Tổng Tiền thanh toán trong năm 2021
@@ -199,8 +208,26 @@ having so_lan_su_dung = 1;
  having lk.ten_loai_khach = 'Platinium' 
  and tong_tien > 100000;
  
+ -- 18.	Xóa những khách hàng có hợp đồng trước năm 2021 (chú ý ràng buộc giữa các bảng).
+ 
+ select ho_ten, kh.ma_khach_hang
+ from khach_hang kh
+ join hop_dong hd on hd.ma_khach_hang = kh.ma_khach_hang
+ where year(hd.ngay_lam_hop_dong)  < 2021;
+ 
+-- 19.	Cập nhật giá cho các dịch vụ đi kèm được sử dụng trên 10 lần trong năm 2020 lên gấp đôi.
+ 
+ select dvdk.ten_dich_vu_di_kem, dvdk.ma_dich_vu_di_kem
+ from dich_vu_di_kem dvdk
+ join hop_dong_chi_tiet hdct on hdct.ma_dich_vu_di_kem = dvdk.ma_dich_vu_di_kem
+ group by hdct.ma_dich_vu_di_kem
+ having sum(hdct.so_luong) > 10 ;
+ 
+ -- 20.	Hiển thị thông tin của tất cả các nhân viên và khách hàng có trong hệ thống, thông tin hiển thị bao gồm id 
+ -- (ma_nhan_vien, ma_khach_hang), ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi.
 
- 
- 
- 
-
+select ma_nhan_vien, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi
+from nhan_vien 
+union all
+select ma_khach_hang, ho_ten, email, so_dien_thoai, ngay_sinh, dia_chi
+from khach_hang
